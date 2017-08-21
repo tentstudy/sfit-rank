@@ -1,0 +1,21 @@
+body#body {
+
+    background-image: url(../images/background-login.jpg);
+    background-repeat: no-repeat;
+
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+}
+
+.flogin {
+    max-width: 450px;
+}
+
+.btn {
+    margin: 5px;
+}
+
+/*.flogin .footer-login {
+    padding: auto;
+}*/
