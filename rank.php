@@ -1,5 +1,10 @@
 <?php
 	date_default_timezone_set("Asia/Ho_Chi_Minh");
+	function linkProfile($member)
+	{
+		$color = ($member->id === $member->name) ? 'text-muted' : '';
+		echo("<a href=\"https://fb.com/{$member->id}\" class=\"{$color}\">{$member->name}</a>");
+	}
 	function getIndex($rank)
 	{
 		if($rank === 0 || $rank === 1 || $rank === 27){
@@ -85,10 +90,9 @@
 										</td>
 										<td class="text-left">
 											<img src="https://graph.facebook.com/<?php echo($member->id) ?>/picture?type=large&redirect=true&width=40&height=40" alt="" class=".img-circle" width="32" height="32">
-											<a href="https://fb.com/<?php echo($member->id) ?>" title=""><?php echo($member->name) ?></a>
-											
+											<?php linkProfile($member) ?>
 										</td>
-										<td class="text-center"><?php echo($member->post) ?></td>
+										<td class="text-center"><?php echo($member->posts) ?></td>
 										<td class="text-center"><?php echo($member->score) ?></td>
 										<!-- <td class="text-center">300</td> -->
 									</tr>
