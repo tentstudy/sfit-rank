@@ -55,7 +55,7 @@ function User(id, name) {
     this.rank = 27;
     this.id = id;
     this.name = name;
-    this.post = 0;
+    this.posts = 0;
     this.comments = { in: 0, out: 0 };
     this.reactions = { in: 0, out: 0 };
     this.score = '?';
@@ -63,11 +63,11 @@ function User(id, name) {
         let rank = this.rank;
         let id = this.id;
         let name = this.name;
-        let post = this.post;
+        let posts = this.posts;
         let comments = this.comments;
         let reactions = this.reactions;
         let score = this.score;
-        return { rank, id, name, post, comments, reactions, score };
+        return { rank, id, name, posts, comments, reactions, score };
     };
     this.commentIn = function() {
         this.comments.in++;
@@ -84,12 +84,12 @@ function User(id, name) {
         this.reactions.out++;
     };
     this.postOut = function() {
-        this.post++;
+        this.posts++;
     };
     this.calculateScore = function() {
         this.score = (this.reactions.in + this.reactions.out) * 1 +
             (this.comments.in + this.comments.out) * 3 +
-            this.post * 5;
+            this.posts * 5;
         return this;
     };
     /* get thôi khỏi set*/
@@ -360,7 +360,17 @@ var statistics = new Vue({
             }
             /* sắp xếp rank */
             statistics.members.list.sort(function(a, b) {
-                return b.score - a.score;
+                /* thứ tự ưu tiên score, post, comment*/
+                if(b.score - a.score !== 0){
+                    return b.score - a.score;    
+                }
+                if(b.posts - a.posts){
+                    return b.posts - a.posts;
+                }
+                if(b.comments - a.comments){
+                    return b.comments - a.comments;
+                }
+                return 0;
             });
             /* thêm biểu tượng rank tương ứng*/
             /* lấy điểm thằng nát nhất != 0*/
@@ -380,48 +390,45 @@ var statistics = new Vue({
                 }
                 statistics.members.list[index].rank = currentRank;
             });
+            /* giáng cấp của thách đầu ngoài top 5 xuống cao thủ*/
+            statistics.members.list.forEach(function(member, index) {
+                if(member.rank !== 0){
+                    return;
+                }
+                if(index > 4){
+                    statistics.members.list[index].rank = 1;
+                }
+            });
             statistics.starting = false;
             $('#list-members').removeClass("disabled");
         },
         /* sort*/
         sortPost: function() {
-        	// this.sort.post *= -1;
-        	// let x = this.sort.post;
         	this.members.list.sort(function(a, b) { /* giản dần*/
     			return (b.post - a.post)/* * x*/;
     		});
         },
         sortCommentOut: function() {
-        	// this.sort.commentOut *= -1;
-        	// let x = this.sort.commentOut;
         	this.members.list.sort(function(a, b) { /* giản dần*/
     			return (b.comments.out - a.comments.out)/* * x*/;
     		});
         },
         sortCommentIn: function() {
-        	// this.sort.commentIn *= -1;
-        	// let x = this.sort.commentIn;
         	this.members.list.sort(function(a, b) { /* giản dần*/
     			return (b.comments.in - a.comments.in)/* * x*/;
     		});
         },
         sortReactionOut: function() {
-        	// this.sort.reactionOut *= -1;
-        	// let x = this.sort.reactionOut;
         	this.members.list.sort(function(a, b) { /* giản dần*/
     			return (b.reactions.out - a.reactions.out)/* * x*/;
     		});
         },
         sortReactionIn: function() {
-        	// this.sort.reactionIn *= -1;
-        	// let x = this.sort.reactionIn;
         	this.members.list.sort(function(a, b) { /* giản dần*/
     			return (b.reactions.in - a.reactions.in)/* * x*/;
     		});
         },
         sortScore: function() {
-        	// this.sort.score *= -1;
-        	// let x = this.sort.score;
         	this.members.list.sort(function(a, b) { /* giản dần*/
     			return (b.score - a.score)/* * x*/;
     		});

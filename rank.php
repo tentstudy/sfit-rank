@@ -71,6 +71,7 @@
 										<th class="text-center col-xs-2" >Rank</th>
 										<th class="text-center col-xs-7">Name</th>
 										<th class="text-center col-xs-1">Posts</th>
+										<!-- <th>Comments</th> -->
 										<th class="text-center col-xs-2">Point</th>
 										<!-- <th class="text-center col-xs-2">Influential</th> -->
 									</tr>
