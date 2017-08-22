@@ -96,7 +96,7 @@
 									<img src="https://graph.facebook.com/{{record.id}}/picture?type=large&redirect=true&width=60&height=60" class="img-circle"alt="">
 									<a href="https://fb.com/{{record.id}}" target="_blank" title="">{{record.name}}</a>
 								</td>
-								<td>{{record.post}}</td>
+								<td>{{record.posts}}</td>
 								<td>{{record.comments.out}}</td>
 								<td>{{record.comments.in}}</td>
 								<td>{{record.reactions.out}}</td>
