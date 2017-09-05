@@ -29,7 +29,12 @@ var app = new Vue({
 					return;
 				}
 				listPosts.forEach(function(post) {
-					app.listPostsNoHashTag.push(post);
+					/* nếu chưa có hash tag*/
+					if (!app.checkHashTag(post.message)) {
+						/*nếu chưa nhắc hash tag*/
+						
+					};
+					// app.listPostsNoHashTag.push(post);
 				});
 			}, function() {
 				

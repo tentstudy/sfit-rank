@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="vn">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>Login</title>
+		<link rel="icon" type="image/png" href="images/Socola.jpg"/>
+		<link rel="stylesheet" href="/vendor/bootstrap/css/bootstrap.min.css">
+		<link rel="stylesheet" href="/vendor/socola.dai.ca/css/socola.css">
+		<link rel="stylesheet" href="/frontend/css/login.css">
+	</head>
+	<body id="body">
+		<br><br><br><br><br><br><br><br>
+		<div class="container flogin"><!--  onsubmit="return validateForm()" -->
+			<form action="return.php" method="GET" role="form">
+				<!-- alert -->
+				<div class="row form-group">
+					<div class="aleft col-xs-12 col-sm-12 col-md-12 col-lg-12">
+						
+					</div>
+				</div>
+				<!-- login with Facebook -->
+				<div class="row form-group">
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
+						<a href="actionToken.php?action=loginWithFacebook" class="" id="loginWithFacebook">
+							<img src="/frontend/images/img-lg-with-facebook.png" alt="" style="height: 80px">
+						</a>
+					</div>
+				</div>
+				<!-- remember me -->
+				<!-- <div class="row form-group">
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+						<div class="checkbox text-white">
+							<label><input type="checkbox" name="autologin"> Duy trì đăng nhập</label>
+						</div>
+					</div>
+				</div> -->
+			</form>
+		</div>
+	</body>
+</html>
+<script src="//code.jquery.com/jquery.js"></script>
+<script src="lib/bootstrap/js/bootstrap.min.js"></script>
+<script src="/frontend/js/login.js"></script>

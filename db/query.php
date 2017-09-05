@@ -53,5 +53,37 @@
 			$sql = "SELECT cout(post_id) as `count` WHERE `post_id`='{$postId}'";
 			return $this->conn->query($sql)->fetch_assoc()['count'] > 0;
 		}
+		/* post dont care*/
+		public function getListPostsDontCare($userId)
+		{
+			/* xem có để get hay k nếu không có thì trả về mảng rỗng*/
+			$sql = "SELECT count(json) as `count` FROM `post_dont_care` where `user_id`='{$userId}'";
+			if(!$this->conn->query($sql)->fetch_assoc()['count']){
+				return '[]';
+			}
+			/*nếu có thì trả về*/
+			$sql = "SELECT `json` FROM `post_dont_care` where `user_id`='{$userId}'";
+			return $this->conn->query($sql)->fetch_assoc()['json'];
+		}
+		public function checkRemindHashTag($postId)
+		{
+			$sql = "SELECT count(post_id) as `count` FROM `remind_hashtag` where `post_id`='{$postId}'";
+			return $this->conn->query($sql)->fetch_assoc()['count'];
+		}
+		public function saveRemindHashTag($postId)
+		{
+			$sql = "INSERT INTO remind_hashtag (post_id) VALUES ('{$postId}')";
+			$this->conn->query($sql);
+		}
+		public function getListMembers()
+		{
+			$sql = "SELECT * FROM `user`";
+			$listMembers = array();
+			$res = $this->conn->query($sql);
+			while($row = $res->fetch_assoc()){
+				$listMembers[] = $row;
+			}
+			return $listMembers;
+		}
 	}
 ?>

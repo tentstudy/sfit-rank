@@ -117,6 +117,7 @@ var statistics = new Vue({
     data: {
         starting: 0,
         interval: '',
+        since: 0,
         intervalView: '',
         idGroup: '',
         post: { total: '?', hasScanComments: '?', hasScanReaction: '?' },
@@ -133,6 +134,7 @@ var statistics = new Vue({
             comments: '',
             reactions: ''
         },
+        listPostsDontCare: [],
         score: {post: 5, comment: 3, like: 1, love: 1, haha: 1, wow: 1, sad: 1, angry: 1},
         sort: { post: -1, commnetOut: -1, commentIn: -1, reactionOut: -1, reactionIn: -1, score: 1}
     },
@@ -145,15 +147,17 @@ var statistics = new Vue({
             this.end = { comments: false, reactions: false, post: false };
             this.sort = { post: -1, commentOut: -1, commentIn: -1, reactionOut: -1, reactionIn: -1, score: 1};
             let since = this.interval === 1 ? `-1 day` : `-${this.interval} days`;
+            // let since = (Math.ceil(new Date().getTime()/1000) - this.interval*24*3600);
             this.intervalView = `trong ${this.interval} ngày gần đây`;
             this.query = {
                 totalMenbers: 'members.limit(0).summary(true)',
                 listMembers: 'members.limit(500)',
-                listPosts: `feed.since(${since}).limit(200){id,from}`,
+                listPosts: `feed.since(${since}).limit(200){id,from,created_time}`,
                 listCommentsInPost: `comments.limit(1000).since(${since}){comments.limit(0).summary(true),from{id}}`,
                 listCommentsInComment: '',
                 listReactionInPost: `reactions.limit(1000).since(${since}){id}`
             };
+            this.since *= 1000;
         },
         start: function() {
             if (this.starting) { return; }
@@ -202,6 +206,7 @@ var statistics = new Vue({
                     if (postDontCare.indexOf(post.id) !== -1) {
                         return;
                     }
+                    console.log(post.created_time);
                     statistics.post.total++;
                     let ownPost = statistics.addMember(post.from.id, post.from.id);
                     statistics.members.list[ownPost].postOut();
@@ -441,4 +446,9 @@ $(function construct() { /* khởi tạo các giá trị ban đầu*/
     fb.checkLiveToken();
     listGroups.getListGroups();
     // statistics.start();
+});
+$(function() {
+    $.getJSON('../API/get-list-post-dont-care.php', function(listPostsDontCare) {
+        statistics.listPostsDontCare = listPostsDontCare;
+    });
 });

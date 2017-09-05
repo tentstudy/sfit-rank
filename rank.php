@@ -73,7 +73,7 @@
 							<table class="table table-hover table-bordered table-condensed table-striped">
 								<thead>
 									<tr>
-										<th class="text-center col-xs-2" >Rank</th>
+										<th class="text-center col-xs-2">Rank</th>
 										<th class="text-center col-xs-7">Name</th>
 										<th class="text-center col-xs-1">Posts</th>
 										<!-- <th>Comments</th> -->
@@ -84,8 +84,8 @@
 								<tbody>
 									<?php foreach ($listMembers as $member): ?>
 									<tr>
-										<td class="text-center">
-											<img src="/images/rank/<?php echo($member->rank) ?>.png" alt="Rank #1" title="Rank #1" width="32" height="32">
+										<td class="text-left">
+											&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="/images/rank/<?php echo($member->rank) ?>.png" alt="Rank #1" title="Rank #1" width="32" height="32">
 											<?php echo getIndex($member->rank) ?>
 										</td>
 										<td class="text-left">
@@ -106,4 +106,5 @@
 			</div>
 		</body>
 	</html>
-	<script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
+	<!-- <script src="/vendor/jquery/jquery.min.js"></script> -->
+	<!-- <script src="/vendor/bootstrap/js/bootstrap.min.js"></script> -->

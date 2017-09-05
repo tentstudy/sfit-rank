@@ -1,4 +1,4 @@
-<?php require_once __DIR__ . '/check-login.php'; ?>
+<?php require_once __DIR__ . '/../check-login.php'; ?>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -118,7 +118,7 @@
 					<table class="table">
 						<tr>
 							<td>Quét thông tin thành viên</td>
-							<td><i class="{{icon.members}}"></td>
+							<td><i class="{{icon.members}}"></i></td>
 							<td class="text-center">{{members.real}}/{{members.total}}</td>
 						</tr>
 						<tr>
@@ -153,6 +153,21 @@
 						</tr>
 					</table>
 				</div>
+				<table class="table table-hover table-input">
+					<thead>
+						<tr>
+							<th></th>
+							<th class="text-center">Posts dont care</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr v-for="post in listPostsDontCare">
+							<td><i class="fa fa-check-square-o"></i></td>
+							<td><input type="text" name="" id="input" class="form-control" value="{{post}}" required="required" pattern="" title=""></td>
+							<td></td>
+						</tr>
+					</tbody>
+				</table>
 			</div>
 		</div>
 	</body>

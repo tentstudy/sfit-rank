@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="vn">
+    <head>
+        <meta charset="utf-8">
+        <title>Danh sách file</title>
+        <link rel="stylesheet" type="text/css" href="../bootstrap-3.1.1-dist/css/bootstrap.min.css">
+        <style type="text/css">
+        .a{
+            width: 30%;
+            float: left;
+        }
+       .applicants{
+            width: 100%;
+       }
+        .text-center b{
+            font-size: 16px;
+        }
+        .b{
+            float: left;
+        }
+        .avatar img{
+            width: 40px;
+            height: 40px;
+        }
+        .tt{
+            content: "";
+            clear: both;
+            padding: 10px;
+        }
+        .tt:hover{
+            cursor: pointer;
+            background: rgb(221, 223, 226);
+        }
+        .information{
+            margin: 10px;
+        }
+        .content iframe{
+            width: 100%;
+            height: 100%;
+        }
+         .content{
+            width: 69%;
+            padding-left: 10px;
+            height: 520px;
+        }
+        </style>
+    </head>
+    <body>
+        <div class="col-md-9 col-md-offset-1 col-sm-10 col-sm-offset-1 col-xs-12">
+            <h1 class="text-center">XXXXXXXXXXXXXXXX</h1>
+            <div class="row">
+                <div class="a list">
+                    <div class="text-center"><b>Người nộp</b></div>
+                    <div class="applicants">
+                        <div class="tt">
+                            <div class="b avatar">
+                                <img src="gai.jpg">
+                            </div>
+                            <div class="b information">
+                                <span>Quân Lương</span>
+                            </div>
+                        </div>
+                        <div class="tt">
+                            <div class="b avatar">
+                                <img src="gai.jpg">
+                            </div>
+                            <div class="b information">
+                                <span>Quân Lương</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="a content">
+                    <div class="text-center"><b>Nộ dung</b></div><br />
+                    <iframe src="a.html">
+                        <p>Trình duyệt của bạn không hỗ trợ iframe.</p>
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
