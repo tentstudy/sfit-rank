@@ -3,7 +3,7 @@
 	function linkProfile($member)
 	{
 		$color = ($member->id === $member->name) ? 'text-muted' : '';
-		echo("<a href=\"https://fb.com/{$member->id}\" class=\"{$color}\">{$member->name}</a>");
+		echo("<a href=\"https://fb.com/{$member->id}\" class=\"{$color}\" target=\"_blank\">{$member->name}</a>");
 	}
 	function getIndex($rank)
 	{
